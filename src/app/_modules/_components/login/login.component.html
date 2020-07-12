@@ -3,9 +3,9 @@
         <strong>Normal User</strong> - U: user P: user<br />
         <strong>Administrator</strong> - U: admin P: admin
     </div>
-    <div class="card">
-        <h4 class="card-header">Angular 9 Role Based Auth Example</h4>
-        <div class="card-body">
+    <div class="card shadow-sm shadow-smshadow-sm ">
+        <h5 class="card-header">Login to your account</h5>
+        <div class="card-body shadow-sm">
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="username">Username</label>
@@ -21,7 +21,8 @@
                         <div *ngIf="f.password.errors.required">Password is required</div>
                     </div>
                 </div>
-                <button [disabled]="loading" class="btn btn-primary">
+                <p>Dont have an account ? <a routerLink="/register">Register</a></p>
+                <button [disabled]="loading" class="btn btn-primary btn-block">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Login
                 </button>
@@ -29,4 +30,4 @@
             </form>
         </div>
     </div>
-</div>            
+</div>

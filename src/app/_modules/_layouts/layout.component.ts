@@ -1,11 +1,11 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthenticationService } from './_services';
-import { User, Role } from './_models';
+import { AuthenticationService } from '../../_services';
+import { User, Role } from '../../_models';
 
-@Component({ selector: 'app', templateUrl: 'app.component.html' })
-export class AppComponent {
+@Component({ selector: 'app', templateUrl: 'layout.component.html' })
+export class LayoutComponent {
     user: User;
 
     constructor(private authenticationService: AuthenticationService) {

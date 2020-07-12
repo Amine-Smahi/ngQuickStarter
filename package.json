@@ -1,9 +1,9 @@
 {
-    "name": "ngQuickStarter",
+    "name": "ng_quick_starter",
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve --open",
+        "start": "ng serv:e --open",
         "build": "ng build"
     },
     "private": true,

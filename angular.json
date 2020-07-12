@@ -16,7 +16,7 @@
                         "index": "src/assets/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
-                        "tsConfig": "tsconfig.app.json",
+                        "tsConfig": "src/configs/tsconfig.app.json",
                         "aot": true,
                         "assets": [
                             "src/favicon.ico",

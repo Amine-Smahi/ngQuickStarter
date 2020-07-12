@@ -1,2 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
-a { cursor: pointer }
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f4f4f4;
+}
+
+a {
+    cursor: pointer
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-dark .navbar-brand {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.bg-red {
+    background-color: #DD0031;
+}
+
+.card-header {
+    color: #fff;
+    background-color: #DD0031;
+}
