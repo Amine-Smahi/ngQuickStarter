@@ -3,7 +3,6 @@ import { first } from 'rxjs/operators';
 import { User } from '../../../_models';
 import { UserService, AuthenticationService, LanguageService } from '../../../_services';
 import { LanguageProperties } from '../../../_models/LanguageProperties';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent {

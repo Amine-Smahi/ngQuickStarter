@@ -6,18 +6,19 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { User } from '../_models';
+import { LocalStorageService } from '.';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
+
     private userSubject: BehaviorSubject<User>;
     public user: Observable<User>;
+    localStorageService: LocalStorageService;
 
-    constructor(
-        private router: Router,
-        private http: HttpClient
-    ) {
-        this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+    constructor(private router: Router, private http: HttpClient, localStorageService: LocalStorageService) {
+        this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorageService.get('user')));
         this.user = this.userSubject.asObservable();
+        this.localStorageService = localStorageService;
     }
 
     public get userValue(): User {
@@ -27,8 +28,7 @@ export class AuthenticationService {
     login(username: string, password: string) {
         return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
             .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
+                this.localStorageService.set('user', JSON.stringify(user));
                 this.userSubject.next(user);
                 return user;
             }));
@@ -39,8 +39,7 @@ export class AuthenticationService {
     }
 
     logout() {
-        // remove user from local storage to log user out
-        localStorage.removeItem('user');
+        this.localStorageService.remove('user');
         this.userSubject.next(null);
         this.router.navigate(['/login']);
     }
