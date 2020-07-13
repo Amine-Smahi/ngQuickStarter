@@ -1,16 +1,20 @@
 ﻿import { Component } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { User } from '../../../_models';
-import { UserService, AuthenticationService } from '../../../_services';
+import { UserService, AuthenticationService, LanguageService } from '../../../_services';
+import { LanguageProperties } from '../../../_models/LanguageProperties';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent {
     loading = false;
     user: User;
     userFromApi: User;
+    storedLanguageProperties: LanguageProperties;
 
-    constructor(private userService: UserService, private authenticationService: AuthenticationService) {
+    constructor(private userService: UserService, private authenticationService: AuthenticationService,languageService : LanguageService) {
         this.user = this.authenticationService.userValue;
+        this.storedLanguageProperties = languageService.get();
     }
 
     ngOnInit() {
